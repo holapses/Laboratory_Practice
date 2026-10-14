@@ -1,10 +1,10 @@
 #include <stdint.h>
 //#include <init.h>
 #include <stm32f429xx.h>
-#define MAX_TIME_LED x
+#define MAX_TIME_LED 1250000
 #define MAX_TIME_SHIM 100
-#define DREBEZG_TIME x
-#define SWITCH_TIME x
+#define DREBEZG_TIME 20000
+#define SWITCH_TIME 125000
 
 void led_switch(_Bool direction);
 void led_brightness(uint32_t time1, uint32_t time2);

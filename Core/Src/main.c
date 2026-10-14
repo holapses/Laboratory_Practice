@@ -15,7 +15,6 @@ void run_cmsis_ver(void);
 void run_simple_ver(void);
 //void run_define_ver(void);
 
-_Bool work_mode = 0;
 _Bool leds_state = 0;
 uint8_t brightness = 0;
 uint8_t led_amount = 0;

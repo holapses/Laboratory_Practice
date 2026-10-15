@@ -1,7 +1,7 @@
 #include <stdint.h>
 //#include <init.h>
 #include <stm32f429xx.h>
-#define MAX_TIME_LED 1250000
+#define MAX_TIME_LED 5.32e6
 #define MAX_TIME_SHIM 100
 #define DREBEZG_TIME 20000
 #define SWITCH_TIME 125000
@@ -14,9 +14,10 @@ void leds_off(void);
 
 void run_advance(void);
 
+uint32_t test = 0;
 _Bool work_mode = 0;
-uint8_t brightness = 0;
-uint8_t led_amount = 0;
+uint8_t brightness = 1;
+uint8_t led_amount = 4;
 uint32_t time_b1 = 0;
 uint32_t time_b2 = 0;
 
@@ -43,6 +44,7 @@ void run_advance(void) {
     GPIOB->PUPDR |= (GPIO_PUPDR_PUPDR9_0 | GPIO_PUPDR_PUPDR10_0); //Pull up for bittons
 
     while(1) {
+        test++;
         shim();
 
         if((GPIOB->IDR & GPIO_IDR_ID9) == 0) {

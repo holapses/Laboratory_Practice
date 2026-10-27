@@ -122,3 +122,27 @@ void EXTI2_IRQHandler(void)
 
     SET_BIT(EXTI->PR, EXTI_PR_PR2);
 }
+
+void GPIO_Ini(void) {
+    SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOCEN | RCC_AHB1ENR_GPIODEN);
+
+    /* Устанавливаем output для светодиодов */
+    SET_BIT(GPIOD->MODER, GPIO_MODER_MODER0_0 | GPIO_MODER_MODER1_0 |
+                          GPIO_MODER_MODER2_0 | GPIO_MODER_MODER3_0 |
+                          GPIO_MODER_MODER4_0 | GPIO_MODER_MODER5_0);
+    
+    /* Зададим скорость работы пинов на среднюю */
+    SET_BIT(GPIOD->OSPEEDR, GPIO_OSPEEDR_OSPEED0_0 | GPIO_OSPEEDR_OSPEED1_0 |
+                          GPIO_OSPEEDR_OSPEED2_0 | GPIO_OSPEEDR_OSPEED3_0 |
+                          GPIO_OSPEEDR_OSPEED4_0 | GPIO_OSPEEDR_OSPEED5_0);
+
+    /* отключим PU/PD резисторы для светодиодов */
+    CLEAR_BIT(GPIOD->PUPDR, GPIO_PUPDR_PUPDR0 | GPIO_PUPDR_PUPDR1 |
+                            GPIO_PUPDR_PUPDR2 | GPIO_PUPDR_PUPDR3 |
+                            GPIO_PUPDR_PUPDR4 | GPIO_PUPDR_PUPDR5);
+    
+    /* очищаем поля кнопок для input */                   
+    CLEAR_BIT(GPIOC->MODER, GPIO_MODER_MODER0 | GPIO_MODER_MODER1 | GPIO_MODER_MODER2);
+
+
+}

@@ -123,7 +123,7 @@ void EXTI2_IRQHandler(void)
     SET_BIT(EXTI->PR, EXTI_PR_PR2);
 }
 
-void GPIO_Ini(void) {
+void GPIO_Init(void) {
     SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOCEN | RCC_AHB1ENR_GPIODEN);
 
     /* Устанавливаем output для светодиодов */
@@ -144,5 +144,24 @@ void GPIO_Ini(void) {
     /* очищаем поля кнопок для input */                   
     CLEAR_BIT(GPIOC->MODER, GPIO_MODER_MODER0 | GPIO_MODER_MODER1 | GPIO_MODER_MODER2);
 
+    /* Задаем PUP для кнопок */
+    MODIFY_BIT(GPIOC->PUPDR, GPIO_PUPDR_PUPDR0 | GPIO_PUPDR_PUPDR1 | GPIO_PUPDR_PUPDR2,
+                             GPIO_PUPDR_PUPDR0_0 | GPIO_PUPDR_PUPDR1_0 | GPIO_PUPDR_PUPDR2_0);
+}
 
+void SysTick_Init(void) {
+    /* Выключаем таймер для инициализации */
+    CLEAR_BIT(SysTick->CTRL, SysTick_CTRL_ENABLE_Msk);
+
+    /* Задаем кол-во отсчетов до прерывания (180000000 * 0.001(мс) = 180000) */
+    SysTick->LOAD = 179999U;
+
+    /* Задаем текущее значение счетчика */
+    SysTick->VAL = 0U;
+
+    /* Включаем тактирование от AHB без деления и прерывание при достижении 0 */
+    SET_BIT(SysTick->CTRL, SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk);
+
+    /* Включаем счетчик */
+    SET_BIT(SysTick->CTRL, SysTick_CTRL_ENABLE_Msk);
 }

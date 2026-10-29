@@ -4,7 +4,7 @@
 void LedController(void);
 
 uint32_t GlobalTickCount;
-uint8_t CurLed = 0;
+uint8_t CurLed = 0; 
 uint16_t LedList[6] = {0, 0, 0, 0, 0, 0};
 uint32_t LedTimersEnd[6] = {0, 0, 0, 0, 0, 0};
 _Bool LedStates[6] = {0, 0, 0, 0, 0, 0};

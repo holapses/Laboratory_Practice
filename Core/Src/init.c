@@ -3,7 +3,7 @@
 void RCC_Ini(void)
 {
     /* 1. Настройка Flash, число циклов 5+1 */
-    MODIFY_REG(FLASH->ACR, FLASH_ACR_LATENCY, FLASH_ACR_LATENCY_5WS);
+    FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_ICEN | FLASH_ACR_DCEN | FLASH_ACR_LATENCY_5WS;
 
     /* 2. Включаем питание для overdrive */
     SET_BIT(RCC->APB1ENR, RCC_APB1ENR_PWREN);
@@ -28,7 +28,7 @@ void RCC_Ini(void)
     while ((RCC->CR & RCC_CR_PLLRDY) != 0U) {} // Проверка включения
 
     /* 7. Включаем тактирование HSE */
-    CLEAR_BIT(RCC->CR, RCC_CR_HSEBYP); // отключаем обход
+    SET_BIT(RCC->CR, RCC_CR_HSEBYP); // вкключаем обход
     SET_BIT(RCC->CR, RCC_CR_HSEON); // включаем HSE
     while ((RCC->CR & RCC_CR_HSERDY) == 0U) {}
 

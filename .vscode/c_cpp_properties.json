@@ -4,7 +4,8 @@
             "name": "STM32 F4",
             "includePath": [
                 "${workspaceFolder}/**",
-                "CMSIS/Include"
+                "CMSIS/Include",
+                "${workspaceFolder}/Core/Inc"
             ],
             "defines": [
                 "STM32F429xx",

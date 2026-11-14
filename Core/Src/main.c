@@ -4,12 +4,18 @@
 void LedController(void);
 
 
-
+uint32_t TestTickCount = 0;
 uint32_t GlobalTickCount;
 uint8_t CurLed = 0; 
 uint16_t LedList[6] = {0, 0, 0, 0, 0, 0};
 uint32_t LedTimersEnd[6] = {0, 0, 0, 0, 0, 0};
 _Bool LedStates[6] = {0, 0, 0, 0, 0, 0};
+_Bool ledone = 0;
+_Bool ledtwo = 0;
+_Bool ledthree = 0;
+_Bool ledfour = 0;
+_Bool ledfive = 0;
+_Bool ledsix = 0;
 _Bool WorkMode = 0;
 
 int main(void) {
@@ -21,57 +27,88 @@ int main(void) {
     GPIOB->MODER |= GPIO_MODER_MODE7_0;
 
     while(1){
-        if(GPIOC->IDR == !GPIO_IDR_ID0)
+        LedController();
     }
 }
 
 void LedController(void) {
-    if(GlobalTickCount >= LedTimersEnd[0]) {
+    for(int16_t i = 0; i <= 5; i++){
+        if(LedTimersEnd[i] >= 10000) {
+            GlobalTickCount = 0;
+            for(int16_t j = 0; j <= 5; j++) {
+                LedTimersEnd[j] = 0;
+            }
+        }
+    }
+    if((GlobalTickCount >= LedTimersEnd[0]) && LedList[0] != 0) {
         LedStates[0] = !LedStates[0];
+        ledone = LedStates[0];
         LedTimersEnd[0] = GlobalTickCount + LedList[0];
-    } else {
-        if(!LedStates[0]) GPIOD->BSRR |= GPIO_BSRR_BR0;
-        else GPIOD->BSRR |= GPIO_BSRR_BS0;
+        } else {
+        if (LedStates[0]) {
+            GPIOD->BSRR = GPIO_BSRR_BS0;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR0;  // Выключить (Reset)
+        }
     }
 
-    if(GlobalTickCount >= LedTimersEnd[1]) {
+    if((GlobalTickCount >= LedTimersEnd[1]) && LedList[1] != 0) {
         LedStates[1] = !LedStates[1];
+        ledtwo = LedStates[1];
         LedTimersEnd[1] = GlobalTickCount + LedList[1];
-    } else {
-        if(!LedStates[1]) GPIOD->BSRR |= GPIO_BSRR_BR1;
-        else GPIOD->BSRR |= GPIO_BSRR_BS1;
+        } else {
+        if (LedStates[1]) {
+            GPIOD->BSRR = GPIO_BSRR_BS1;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR1;  // Выключить (Reset)
+        }
     }
 
-    if(GlobalTickCount >= LedTimersEnd[2]) {
+    if((GlobalTickCount >= LedTimersEnd[2]) && LedList[2] != 0) {
         LedStates[2] = !LedStates[2];
+        ledthree = LedStates[2];
         LedTimersEnd[2] = GlobalTickCount + LedList[2];
-    } else {
-        if(!LedStates[2]) GPIOD->BSRR |= GPIO_BSRR_BR2;
-        else GPIOD->BSRR |= GPIO_BSRR_BS2;
+        } else {
+        if (LedStates[2]) {
+            GPIOD->BSRR = GPIO_BSRR_BS2;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR2;  // Выключить (Reset)
+        }
     }
 
-    if(GlobalTickCount >= LedTimersEnd[3]) {
+    if((GlobalTickCount >= LedTimersEnd[3]) && LedList[3] != 0) {
         LedStates[3] = !LedStates[3];
+        ledfour = LedStates[3];
         LedTimersEnd[3] = GlobalTickCount + LedList[3];
-    } else {
-        if(!LedStates[3]) GPIOD->BSRR |= GPIO_BSRR_BR3;
-        else GPIOD->BSRR |= GPIO_BSRR_BS3;
+        } else {
+        if (LedStates[3]) {
+            GPIOD->BSRR = GPIO_BSRR_BS3;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR3;  // Выключить (Reset)
+        }
     }
 
-    if(GlobalTickCount >= LedTimersEnd[4]) {
+    if((GlobalTickCount >= LedTimersEnd[4]) && LedList[4] != 0) {
         LedStates[4] = !LedStates[4];
+        ledfive = LedStates[4];
         LedTimersEnd[4] = GlobalTickCount + LedList[4];
-    } else {
-        if(!LedStates[4]) GPIOD->BSRR |= GPIO_BSRR_BR4;
-        else GPIOD->BSRR |= GPIO_BSRR_BS4;
+        } else {
+        if (LedStates[4]) {
+            GPIOD->BSRR = GPIO_BSRR_BS4;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR4;  // Выключить (Reset)
+        }
     }
 
-    if(GlobalTickCount >= LedTimersEnd[5]) {
+    if((GlobalTickCount >= LedTimersEnd[5]) && LedList[5] != 0) {
         LedStates[5] = !LedStates[5];
+        ledsix = LedStates[5];
         LedTimersEnd[5] = GlobalTickCount + LedList[5];
-    } else {
-        if(!LedStates[5]) GPIOD->BSRR |= GPIO_BSRR_BR5;
-        else GPIOD->BSRR |= GPIO_BSRR_BS5;
+        } else {
+        if (LedStates[5]) {
+            GPIOD->BSRR = GPIO_BSRR_BS5;  // Включить (Set)
+        } else {
+            GPIOD->BSRR = GPIO_BSRR_BR5;  // Выключить (Reset)
+        }
     }
-
 }

@@ -6,19 +6,14 @@ uint8_t Btn3Count;
 
 uint16_t ExternInterruptTickCount;
 extern uint16_t GlobalTickCount;
+extern uint32_t TestTickCount;
 extern _Bool WorkMode;
 extern uint8_t CurLed;
-extern float LedList[6];
+extern uint16_t LedList[6];
 
 void EXTI0_IRQHandler(void)
 {
     SET_BIT(EXTI->PR, EXTI_PR_PR0);
-    GPIOD->BSRR |= GPIO_BSRR_BS0;
-    GPIOD->BSRR |= GPIO_BSRR_BS1;
-    GPIOD->BSRR |= GPIO_BSRR_BS2;
-    GPIOD->BSRR |= GPIO_BSRR_BS3;
-    GPIOD->BSRR |= GPIO_BSRR_BS4;
-    GPIOD->BSRR |= GPIO_BSRR_BS5;
     if(ExternInterruptTickCount >= DELAY_BUTTON_FILTER){
         Btn1Count++;
         ExternInterruptTickCount = 0;
@@ -26,9 +21,9 @@ void EXTI0_IRQHandler(void)
         Btn2Count = 0;
     }
 }
-void EXTI1_IRQHandler(void)
+void EXTI3_IRQHandler(void)
 {
-    SET_BIT(EXTI->PR, EXTI_PR_PR1);
+    SET_BIT(EXTI->PR, EXTI_PR_PR3);
     if(ExternInterruptTickCount >= DELAY_BUTTON_FILTER){
         Btn2Count++;
         ExternInterruptTickCount = 0;
@@ -37,8 +32,12 @@ void EXTI1_IRQHandler(void)
                 LedList[CurLed] = 833;
                 Btn2Count = 0;
             }
-            else if(Btn2Count == 1) LedList[CurLed] = 385;
-            else if(Btn2Count == 2) LedList[CurLed] = 208;
+            else if(Btn2Count == 1){
+                LedList[CurLed] = 385;
+            } 
+            else if(Btn2Count == 2) {
+                LedList[CurLed] = 208;
+            }
         } else {
             if(Btn2Count == 3) {
                 LedList[CurLed] = 2500;
@@ -62,6 +61,9 @@ void EXTI2_IRQHandler(void)
 }
 void SysTick_Handler(void) {
     GlobalTickCount++;
+    if((GlobalTickCount % 1000) == 0) {
+        TestTickCount++;
+    }
     ExternInterruptTickCount++;
 }
 

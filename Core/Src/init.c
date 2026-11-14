@@ -71,16 +71,16 @@ void EXTI_ITR_Ini(void)
     /* Связываем пины кнопок с EXIT */
     MODIFY_REG(SYSCFG->EXTICR[0],
             SYSCFG_EXTICR1_EXTI0_Msk |
-            SYSCFG_EXTICR1_EXTI1_Msk |
+            SYSCFG_EXTICR1_EXTI3_Msk |
             SYSCFG_EXTICR1_EXTI2_Msk,
             SYSCFG_EXTICR1_EXTI0_PC |
-            SYSCFG_EXTICR1_EXTI1_PC |
+            SYSCFG_EXTICR1_EXTI3_PC |
             SYSCFG_EXTICR1_EXTI2_PC);
 
     /* Разрешаем прерывание EXIT и задаем нарастающий фронт */
-    SET_BIT(EXTI->IMR, EXTI_IMR_MR0 | EXTI_IMR_MR1 | EXTI_IMR_MR2);
-    SET_BIT(EXTI->RTSR, EXTI_RTSR_TR0 | EXTI_RTSR_TR1 | EXTI_RTSR_TR2);
-    CLEAR_BIT(EXTI->FTSR, EXTI_FTSR_TR0 | EXTI_FTSR_TR1 | EXTI_FTSR_TR2);
+    SET_BIT(EXTI->IMR, EXTI_IMR_MR0 | EXTI_IMR_MR3 | EXTI_IMR_MR2);
+    SET_BIT(EXTI->RTSR, EXTI_RTSR_TR0 | EXTI_RTSR_TR3 | EXTI_RTSR_TR2);
+    CLEAR_BIT(EXTI->FTSR, EXTI_FTSR_TR0 | EXTI_FTSR_TR3 | EXTI_FTSR_TR2);
 
 
     /* Задаем приоритеты NVIC и разрешаем прерывание NVIC */
@@ -89,7 +89,7 @@ void EXTI_ITR_Ini(void)
         NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0)
     );
     NVIC_SetPriority(
-        EXTI1_IRQn,
+        EXTI3_IRQn,
         NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0)
     );
     NVIC_SetPriority(
@@ -98,7 +98,7 @@ void EXTI_ITR_Ini(void)
     );
 
     NVIC_EnableIRQ(EXTI0_IRQn);
-    NVIC_EnableIRQ(EXTI1_IRQn);
+    NVIC_EnableIRQ(EXTI3_IRQn);
     NVIC_EnableIRQ(EXTI2_IRQn);
 }
 
@@ -121,11 +121,11 @@ void GPIO_Ini(void) {
                             GPIO_PUPDR_PUPDR4 | GPIO_PUPDR_PUPDR5);
     
     /* очищаем поля кнопок для input */                   
-    CLEAR_BIT(GPIOC->MODER, GPIO_MODER_MODER0 | GPIO_MODER_MODER1 | GPIO_MODER_MODER2);
+    CLEAR_BIT(GPIOC->MODER, GPIO_MODER_MODER0 | GPIO_MODER_MODER3 | GPIO_MODER_MODER2);
 
     /* Задаем PUP для кнопок */
-    MODIFY_REG(GPIOC->PUPDR, GPIO_PUPDR_PUPDR0 | GPIO_PUPDR_PUPDR1 | GPIO_PUPDR_PUPDR2,
-                             GPIO_PUPDR_PUPDR0_0 | GPIO_PUPDR_PUPDR1_0 | GPIO_PUPDR_PUPDR2_0);
+    MODIFY_REG(GPIOC->PUPDR, GPIO_PUPDR_PUPDR0 | GPIO_PUPDR_PUPDR3 | GPIO_PUPDR_PUPDR2,
+                             GPIO_PUPDR_PUPDR0_0 | GPIO_PUPDR_PUPDR3_0 | GPIO_PUPDR_PUPDR2_0);
 }
 
 void SysTick_Init(void) {
@@ -136,7 +136,7 @@ void SysTick_Init(void) {
     SysTick->LOAD = 179999U;
 
     /* Задаем текущее значение счетчика */
-    SysTick->VAL = 0U;
+    SysTick->VAL = 179999U;
 
     /* Включаем тактирование от AHB без деления и прерывание при достижении 0 */
     SET_BIT(SysTick->CTRL, SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk);

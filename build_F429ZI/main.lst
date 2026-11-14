@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 1
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 1
   40 0002 FFF7FEFF 		bl	GPIO_Ini
   41              	.LVL0:
   17:Core/Src/main.c ****     RCC_Ini();
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 2
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 2
 
 
   42              		.loc 1 17 5 view .LVU2
@@ -75,7 +75,7 @@ ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 1
   20:Core/Src/main.c ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
   51              		.loc 1 20 5 view .LVU5
   52              		.loc 1 20 8 is_stmt 0 view .LVU6
-  53 0012 084A     		ldr	r2, .L4
+  53 0012 064A     		ldr	r2, .L4
   54 0014 136B     		ldr	r3, [r2, #48]
   55              		.loc 1 20 18 view .LVU7
   56 0016 43F00203 		orr	r3, r3, #2
@@ -92,531 +92,523 @@ ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 1
   22:Core/Src/main.c **** 
   23:Core/Src/main.c ****     while(1){
   66              		.loc 1 23 5 is_stmt 1 view .LVU11
-  24:Core/Src/main.c ****         GPIOB->BSRR |= GPIO_BSRR_BS7;
-  67              		.loc 1 24 9 discriminator 1 view .LVU12
-  68              		.loc 1 24 14 is_stmt 0 discriminator 1 view .LVU13
-  69 0028 034A     		ldr	r2, .L4+4
-  70 002a 9369     		ldr	r3, [r2, #24]
-  71              		.loc 1 24 21 discriminator 1 view .LVU14
-  72 002c 43F08003 		orr	r3, r3, #128
-  73 0030 9361     		str	r3, [r2, #24]
-  23:Core/Src/main.c ****         GPIOB->BSRR |= GPIO_BSRR_BS7;
-  74              		.loc 1 23 10 is_stmt 1 view .LVU15
-  75 0032 F9E7     		b	.L2
-  76              	.L5:
-  77              		.align	2
-  78              	.L4:
-  79 0034 00380240 		.word	1073887232
-  80 0038 00040240 		.word	1073873920
-  81              		.cfi_endproc
-  82              	.LFE130:
-  84              		.section	.text.LedController,"ax",%progbits
-  85              		.align	1
-  86              		.global	LedController
-  87              		.syntax unified
-  88              		.thumb
-  89              		.thumb_func
-  91              	LedController:
-  92              	.LFB131:
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 3
+  24:Core/Src/main.c ****     }
+  67              		.loc 1 24 5 view .LVU12
+  23:Core/Src/main.c ****     }
+  68              		.loc 1 23 10 view .LVU13
+  69 0028 FEE7     		b	.L2
+  70              	.L5:
+  71 002a 00BF     		.align	2
+  72              	.L4:
+  73 002c 00380240 		.word	1073887232
+  74              		.cfi_endproc
+  75              	.LFE130:
+  77              		.section	.text.LedController,"ax",%progbits
+  78              		.align	1
+  79              		.global	LedController
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  84              	LedController:
+  85              	.LFB131:
+  25:Core/Src/main.c **** }
+  26:Core/Src/main.c **** 
+  27:Core/Src/main.c **** void LedController(void) {
+  86              		.loc 1 27 26 view -0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 3
 
 
-  25:Core/Src/main.c ****     }
-  26:Core/Src/main.c **** }
-  27:Core/Src/main.c **** 
-  28:Core/Src/main.c **** void LedController(void) {
-  93              		.loc 1 28 26 view -0
-  94              		.cfi_startproc
-  95              		@ args = 0, pretend = 0, frame = 0
-  96              		@ frame_needed = 0, uses_anonymous_args = 0
-  97              		@ link register save eliminated.
-  29:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[0]) {
-  98              		.loc 1 29 5 view .LVU17
-  99              		.loc 1 29 39 is_stmt 0 view .LVU18
- 100 0000 584B     		ldr	r3, .L25
- 101 0002 1A68     		ldr	r2, [r3]
- 102              		.loc 1 29 24 view .LVU19
- 103 0004 584B     		ldr	r3, .L25+4
- 104 0006 1B68     		ldr	r3, [r3]
- 105              		.loc 1 29 7 view .LVU20
- 106 0008 9A42     		cmp	r2, r3
- 107 000a 50D8     		bhi	.L7
-  30:Core/Src/main.c ****         LedStates[0] = !LedStates[0];
- 108              		.loc 1 30 9 is_stmt 1 view .LVU21
- 109              		.loc 1 30 34 is_stmt 0 view .LVU22
- 110 000c 5749     		ldr	r1, .L25+8
- 111 000e 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
- 112              		.loc 1 30 9 view .LVU23
- 113 0010 82F00102 		eor	r2, r2, #1
- 114              		.loc 1 30 22 view .LVU24
- 115 0014 0A70     		strb	r2, [r1]
-  31:Core/Src/main.c ****         LedTimersEnd[0] = GlobalTickCount + LedList[0];
- 116              		.loc 1 31 9 is_stmt 1 view .LVU25
- 117              		.loc 1 31 52 is_stmt 0 view .LVU26
- 118 0016 564A     		ldr	r2, .L25+12
- 119 0018 1288     		ldrh	r2, [r2]
- 120              		.loc 1 31 43 view .LVU27
- 121 001a 1A44     		add	r2, r2, r3
- 122              		.loc 1 31 25 view .LVU28
- 123 001c 5149     		ldr	r1, .L25
- 124 001e 0A60     		str	r2, [r1]
- 125              	.L8:
-  32:Core/Src/main.c ****     } else {
-  33:Core/Src/main.c ****         if(!LedStates[0]) GPIOD->BSRR |= GPIO_BSRR_BR0;
-  34:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
-  35:Core/Src/main.c ****     }
-  36:Core/Src/main.c **** 
-  37:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[1]) {
- 126              		.loc 1 37 5 is_stmt 1 view .LVU29
- 127              		.loc 1 37 39 is_stmt 0 view .LVU30
- 128 0020 504A     		ldr	r2, .L25
- 129 0022 5268     		ldr	r2, [r2, #4]
- 130              		.loc 1 37 7 view .LVU31
- 131 0024 9342     		cmp	r3, r2
- 132 0026 51D3     		bcc	.L10
-  38:Core/Src/main.c ****         LedStates[1] = !LedStates[1];
- 133              		.loc 1 38 9 is_stmt 1 view .LVU32
- 134              		.loc 1 38 34 is_stmt 0 view .LVU33
- 135 0028 5049     		ldr	r1, .L25+8
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 4
-
-
- 136 002a 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
- 137              		.loc 1 38 9 view .LVU34
- 138 002c 82F00102 		eor	r2, r2, #1
- 139              		.loc 1 38 22 view .LVU35
- 140 0030 4A70     		strb	r2, [r1, #1]
-  39:Core/Src/main.c ****         LedTimersEnd[1] = GlobalTickCount + LedList[1];
- 141              		.loc 1 39 9 is_stmt 1 view .LVU36
- 142              		.loc 1 39 52 is_stmt 0 view .LVU37
- 143 0032 4F4A     		ldr	r2, .L25+12
- 144 0034 5288     		ldrh	r2, [r2, #2]
- 145              		.loc 1 39 43 view .LVU38
- 146 0036 1A44     		add	r2, r2, r3
- 147              		.loc 1 39 25 view .LVU39
- 148 0038 4A49     		ldr	r1, .L25
- 149 003a 4A60     		str	r2, [r1, #4]
- 150              	.L11:
-  40:Core/Src/main.c ****     } else {
-  41:Core/Src/main.c ****         if(!LedStates[1]) GPIOD->BSRR |= GPIO_BSRR_BR1;
-  42:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
-  43:Core/Src/main.c ****     }
-  44:Core/Src/main.c **** 
-  45:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[2]) {
- 151              		.loc 1 45 5 is_stmt 1 view .LVU40
- 152              		.loc 1 45 39 is_stmt 0 view .LVU41
- 153 003c 494A     		ldr	r2, .L25
- 154 003e 9268     		ldr	r2, [r2, #8]
- 155              		.loc 1 45 7 view .LVU42
- 156 0040 9342     		cmp	r3, r2
- 157 0042 52D3     		bcc	.L13
-  46:Core/Src/main.c ****         LedStates[2] = !LedStates[2];
- 158              		.loc 1 46 9 is_stmt 1 view .LVU43
- 159              		.loc 1 46 34 is_stmt 0 view .LVU44
- 160 0044 4949     		ldr	r1, .L25+8
- 161 0046 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
- 162              		.loc 1 46 9 view .LVU45
- 163 0048 82F00102 		eor	r2, r2, #1
- 164              		.loc 1 46 22 view .LVU46
- 165 004c 8A70     		strb	r2, [r1, #2]
-  47:Core/Src/main.c ****         LedTimersEnd[2] = GlobalTickCount + LedList[2];
- 166              		.loc 1 47 9 is_stmt 1 view .LVU47
- 167              		.loc 1 47 52 is_stmt 0 view .LVU48
- 168 004e 484A     		ldr	r2, .L25+12
- 169 0050 9288     		ldrh	r2, [r2, #4]
- 170              		.loc 1 47 43 view .LVU49
- 171 0052 1A44     		add	r2, r2, r3
- 172              		.loc 1 47 25 view .LVU50
- 173 0054 4349     		ldr	r1, .L25
- 174 0056 8A60     		str	r2, [r1, #8]
- 175              	.L14:
-  48:Core/Src/main.c ****     } else {
-  49:Core/Src/main.c ****         if(!LedStates[2]) GPIOD->BSRR |= GPIO_BSRR_BR2;
-  50:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
-  51:Core/Src/main.c ****     }
-  52:Core/Src/main.c **** 
-  53:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[3]) {
- 176              		.loc 1 53 5 is_stmt 1 view .LVU51
- 177              		.loc 1 53 39 is_stmt 0 view .LVU52
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 5
-
-
- 178 0058 424A     		ldr	r2, .L25
- 179 005a D268     		ldr	r2, [r2, #12]
- 180              		.loc 1 53 7 view .LVU53
- 181 005c 9342     		cmp	r3, r2
- 182 005e 53D3     		bcc	.L16
-  54:Core/Src/main.c ****         LedStates[3] = !LedStates[3];
- 183              		.loc 1 54 9 is_stmt 1 view .LVU54
- 184              		.loc 1 54 34 is_stmt 0 view .LVU55
- 185 0060 4249     		ldr	r1, .L25+8
- 186 0062 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
- 187              		.loc 1 54 9 view .LVU56
- 188 0064 82F00102 		eor	r2, r2, #1
- 189              		.loc 1 54 22 view .LVU57
- 190 0068 CA70     		strb	r2, [r1, #3]
-  55:Core/Src/main.c ****         LedTimersEnd[3] = GlobalTickCount + LedList[3];
- 191              		.loc 1 55 9 is_stmt 1 view .LVU58
- 192              		.loc 1 55 52 is_stmt 0 view .LVU59
- 193 006a 414A     		ldr	r2, .L25+12
- 194 006c D288     		ldrh	r2, [r2, #6]
- 195              		.loc 1 55 43 view .LVU60
- 196 006e 1A44     		add	r2, r2, r3
- 197              		.loc 1 55 25 view .LVU61
- 198 0070 3C49     		ldr	r1, .L25
- 199 0072 CA60     		str	r2, [r1, #12]
- 200              	.L17:
-  56:Core/Src/main.c ****     } else {
-  57:Core/Src/main.c ****         if(!LedStates[3]) GPIOD->BSRR |= GPIO_BSRR_BR3;
-  58:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
-  59:Core/Src/main.c ****     }
-  60:Core/Src/main.c **** 
-  61:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[4]) {
- 201              		.loc 1 61 5 is_stmt 1 view .LVU62
- 202              		.loc 1 61 39 is_stmt 0 view .LVU63
- 203 0074 3B4A     		ldr	r2, .L25
- 204 0076 1269     		ldr	r2, [r2, #16]
- 205              		.loc 1 61 7 view .LVU64
- 206 0078 9342     		cmp	r3, r2
- 207 007a 54D3     		bcc	.L19
-  62:Core/Src/main.c ****         LedStates[4] = !LedStates[4];
- 208              		.loc 1 62 9 is_stmt 1 view .LVU65
- 209              		.loc 1 62 34 is_stmt 0 view .LVU66
- 210 007c 3B49     		ldr	r1, .L25+8
- 211 007e 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
- 212              		.loc 1 62 9 view .LVU67
- 213 0080 82F00102 		eor	r2, r2, #1
- 214              		.loc 1 62 22 view .LVU68
- 215 0084 0A71     		strb	r2, [r1, #4]
-  63:Core/Src/main.c ****         LedTimersEnd[4] = GlobalTickCount + LedList[4];
- 216              		.loc 1 63 9 is_stmt 1 view .LVU69
- 217              		.loc 1 63 52 is_stmt 0 view .LVU70
- 218 0086 3A4A     		ldr	r2, .L25+12
- 219 0088 1289     		ldrh	r2, [r2, #8]
- 220              		.loc 1 63 43 view .LVU71
- 221 008a 1A44     		add	r2, r2, r3
- 222              		.loc 1 63 25 view .LVU72
- 223 008c 3549     		ldr	r1, .L25
- 224 008e 0A61     		str	r2, [r1, #16]
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 6
-
-
- 225              	.L20:
-  64:Core/Src/main.c ****     } else {
-  65:Core/Src/main.c ****         if(!LedStates[4]) GPIOD->BSRR |= GPIO_BSRR_BR4;
-  66:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
-  67:Core/Src/main.c ****     }
-  68:Core/Src/main.c **** 
-  69:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[5]) {
- 226              		.loc 1 69 5 is_stmt 1 view .LVU73
- 227              		.loc 1 69 39 is_stmt 0 view .LVU74
- 228 0090 344A     		ldr	r2, .L25
- 229 0092 5269     		ldr	r2, [r2, #20]
- 230              		.loc 1 69 7 view .LVU75
- 231 0094 9342     		cmp	r3, r2
- 232 0096 55D3     		bcc	.L22
-  70:Core/Src/main.c ****         LedStates[5] = !LedStates[5];
- 233              		.loc 1 70 9 is_stmt 1 view .LVU76
- 234              		.loc 1 70 34 is_stmt 0 view .LVU77
- 235 0098 3449     		ldr	r1, .L25+8
- 236 009a 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
- 237              		.loc 1 70 9 view .LVU78
- 238 009c 82F00102 		eor	r2, r2, #1
- 239              		.loc 1 70 22 view .LVU79
- 240 00a0 4A71     		strb	r2, [r1, #5]
-  71:Core/Src/main.c ****         LedTimersEnd[5] = GlobalTickCount + LedList[5];
- 241              		.loc 1 71 9 is_stmt 1 view .LVU80
- 242              		.loc 1 71 52 is_stmt 0 view .LVU81
- 243 00a2 334A     		ldr	r2, .L25+12
- 244 00a4 5289     		ldrh	r2, [r2, #10]
- 245              		.loc 1 71 43 view .LVU82
- 246 00a6 1344     		add	r3, r3, r2
- 247              		.loc 1 71 25 view .LVU83
- 248 00a8 2E4A     		ldr	r2, .L25
- 249 00aa 5361     		str	r3, [r2, #20]
- 250 00ac 7047     		bx	lr
- 251              	.L7:
+  90              		@ link register save eliminated.
+  28:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[0]) {
+  91              		.loc 1 28 5 view .LVU15
+  92              		.loc 1 28 39 is_stmt 0 view .LVU16
+  93 0000 584B     		ldr	r3, .L25
+  94 0002 1A68     		ldr	r2, [r3]
+  95              		.loc 1 28 24 view .LVU17
+  96 0004 584B     		ldr	r3, .L25+4
+  97 0006 1B68     		ldr	r3, [r3]
+  98              		.loc 1 28 7 view .LVU18
+  99 0008 9A42     		cmp	r2, r3
+ 100 000a 50D8     		bhi	.L7
+  29:Core/Src/main.c ****         LedStates[0] = !LedStates[0];
+ 101              		.loc 1 29 9 is_stmt 1 view .LVU19
+ 102              		.loc 1 29 34 is_stmt 0 view .LVU20
+ 103 000c 5749     		ldr	r1, .L25+8
+ 104 000e 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 105              		.loc 1 29 9 view .LVU21
+ 106 0010 82F00102 		eor	r2, r2, #1
+ 107              		.loc 1 29 22 view .LVU22
+ 108 0014 0A70     		strb	r2, [r1]
+  30:Core/Src/main.c ****         LedTimersEnd[0] = GlobalTickCount + LedList[0];
+ 109              		.loc 1 30 9 is_stmt 1 view .LVU23
+ 110              		.loc 1 30 52 is_stmt 0 view .LVU24
+ 111 0016 564A     		ldr	r2, .L25+12
+ 112 0018 1288     		ldrh	r2, [r2]
+ 113              		.loc 1 30 43 view .LVU25
+ 114 001a 1A44     		add	r2, r2, r3
+ 115              		.loc 1 30 25 view .LVU26
+ 116 001c 5149     		ldr	r1, .L25
+ 117 001e 0A60     		str	r2, [r1]
+ 118              	.L8:
+  31:Core/Src/main.c ****     } else {
+  32:Core/Src/main.c ****         if(!LedStates[0]) GPIOD->BSRR |= GPIO_BSRR_BR0;
   33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 252              		.loc 1 33 9 is_stmt 1 view .LVU84
-  33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 253              		.loc 1 33 22 is_stmt 0 view .LVU85
- 254 00ae 2F4A     		ldr	r2, .L25+8
- 255 00b0 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
-  33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 256              		.loc 1 33 11 view .LVU86
- 257 00b2 2AB9     		cbnz	r2, .L9
-  33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 258              		.loc 1 33 27 is_stmt 1 discriminator 1 view .LVU87
-  33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 259              		.loc 1 33 32 is_stmt 0 discriminator 1 view .LVU88
- 260 00b4 2F49     		ldr	r1, .L25+16
- 261 00b6 8A69     		ldr	r2, [r1, #24]
-  33:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
- 262              		.loc 1 33 39 discriminator 1 view .LVU89
- 263 00b8 42F48032 		orr	r2, r2, #65536
- 264 00bc 8A61     		str	r2, [r1, #24]
- 265 00be AFE7     		b	.L8
- 266              	.L9:
   34:Core/Src/main.c ****     }
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 7
+  35:Core/Src/main.c **** 
+  36:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[1]) {
+ 119              		.loc 1 36 5 is_stmt 1 view .LVU27
+ 120              		.loc 1 36 39 is_stmt 0 view .LVU28
+ 121 0020 504A     		ldr	r2, .L25
+ 122 0022 5268     		ldr	r2, [r2, #4]
+ 123              		.loc 1 36 7 view .LVU29
+ 124 0024 9342     		cmp	r3, r2
+ 125 0026 51D3     		bcc	.L10
+  37:Core/Src/main.c ****         LedStates[1] = !LedStates[1];
+ 126              		.loc 1 37 9 is_stmt 1 view .LVU30
+ 127              		.loc 1 37 34 is_stmt 0 view .LVU31
+ 128 0028 5049     		ldr	r1, .L25+8
+ 129 002a 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
+ 130              		.loc 1 37 9 view .LVU32
+ 131 002c 82F00102 		eor	r2, r2, #1
+ 132              		.loc 1 37 22 view .LVU33
+ 133 0030 4A70     		strb	r2, [r1, #1]
+  38:Core/Src/main.c ****         LedTimersEnd[1] = GlobalTickCount + LedList[1];
+ 134              		.loc 1 38 9 is_stmt 1 view .LVU34
+ 135              		.loc 1 38 52 is_stmt 0 view .LVU35
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 4
 
 
- 267              		.loc 1 34 14 is_stmt 1 view .LVU90
-  34:Core/Src/main.c ****     }
- 268              		.loc 1 34 19 is_stmt 0 view .LVU91
- 269 00c0 2C49     		ldr	r1, .L25+16
- 270 00c2 8A69     		ldr	r2, [r1, #24]
-  34:Core/Src/main.c ****     }
- 271              		.loc 1 34 26 view .LVU92
- 272 00c4 42F00102 		orr	r2, r2, #1
- 273 00c8 8A61     		str	r2, [r1, #24]
- 274 00ca A9E7     		b	.L8
- 275              	.L10:
+ 136 0032 4F4A     		ldr	r2, .L25+12
+ 137 0034 5288     		ldrh	r2, [r2, #2]
+ 138              		.loc 1 38 43 view .LVU36
+ 139 0036 1A44     		add	r2, r2, r3
+ 140              		.loc 1 38 25 view .LVU37
+ 141 0038 4A49     		ldr	r1, .L25
+ 142 003a 4A60     		str	r2, [r1, #4]
+ 143              	.L11:
+  39:Core/Src/main.c ****     } else {
+  40:Core/Src/main.c ****         if(!LedStates[1]) GPIOD->BSRR |= GPIO_BSRR_BR1;
   41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 276              		.loc 1 41 9 is_stmt 1 view .LVU93
-  41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 277              		.loc 1 41 22 is_stmt 0 view .LVU94
- 278 00cc 274A     		ldr	r2, .L25+8
- 279 00ce 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
-  41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 280              		.loc 1 41 11 view .LVU95
- 281 00d0 2AB9     		cbnz	r2, .L12
-  41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 282              		.loc 1 41 27 is_stmt 1 discriminator 1 view .LVU96
-  41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 283              		.loc 1 41 32 is_stmt 0 discriminator 1 view .LVU97
- 284 00d2 2849     		ldr	r1, .L25+16
- 285 00d4 8A69     		ldr	r2, [r1, #24]
-  41:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
- 286              		.loc 1 41 39 discriminator 1 view .LVU98
- 287 00d6 42F40032 		orr	r2, r2, #131072
- 288 00da 8A61     		str	r2, [r1, #24]
- 289 00dc AEE7     		b	.L11
- 290              	.L12:
   42:Core/Src/main.c ****     }
- 291              		.loc 1 42 14 is_stmt 1 view .LVU99
-  42:Core/Src/main.c ****     }
- 292              		.loc 1 42 19 is_stmt 0 view .LVU100
- 293 00de 2549     		ldr	r1, .L25+16
- 294 00e0 8A69     		ldr	r2, [r1, #24]
-  42:Core/Src/main.c ****     }
- 295              		.loc 1 42 26 view .LVU101
- 296 00e2 42F00202 		orr	r2, r2, #2
- 297 00e6 8A61     		str	r2, [r1, #24]
- 298 00e8 A8E7     		b	.L11
- 299              	.L13:
+  43:Core/Src/main.c **** 
+  44:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[2]) {
+ 144              		.loc 1 44 5 is_stmt 1 view .LVU38
+ 145              		.loc 1 44 39 is_stmt 0 view .LVU39
+ 146 003c 494A     		ldr	r2, .L25
+ 147 003e 9268     		ldr	r2, [r2, #8]
+ 148              		.loc 1 44 7 view .LVU40
+ 149 0040 9342     		cmp	r3, r2
+ 150 0042 52D3     		bcc	.L13
+  45:Core/Src/main.c ****         LedStates[2] = !LedStates[2];
+ 151              		.loc 1 45 9 is_stmt 1 view .LVU41
+ 152              		.loc 1 45 34 is_stmt 0 view .LVU42
+ 153 0044 4949     		ldr	r1, .L25+8
+ 154 0046 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 155              		.loc 1 45 9 view .LVU43
+ 156 0048 82F00102 		eor	r2, r2, #1
+ 157              		.loc 1 45 22 view .LVU44
+ 158 004c 8A70     		strb	r2, [r1, #2]
+  46:Core/Src/main.c ****         LedTimersEnd[2] = GlobalTickCount + LedList[2];
+ 159              		.loc 1 46 9 is_stmt 1 view .LVU45
+ 160              		.loc 1 46 52 is_stmt 0 view .LVU46
+ 161 004e 484A     		ldr	r2, .L25+12
+ 162 0050 9288     		ldrh	r2, [r2, #4]
+ 163              		.loc 1 46 43 view .LVU47
+ 164 0052 1A44     		add	r2, r2, r3
+ 165              		.loc 1 46 25 view .LVU48
+ 166 0054 4349     		ldr	r1, .L25
+ 167 0056 8A60     		str	r2, [r1, #8]
+ 168              	.L14:
+  47:Core/Src/main.c ****     } else {
+  48:Core/Src/main.c ****         if(!LedStates[2]) GPIOD->BSRR |= GPIO_BSRR_BR2;
   49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 300              		.loc 1 49 9 is_stmt 1 view .LVU102
-  49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 301              		.loc 1 49 22 is_stmt 0 view .LVU103
- 302 00ea 204A     		ldr	r2, .L25+8
- 303 00ec 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
-  49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 304              		.loc 1 49 11 view .LVU104
- 305 00ee 2AB9     		cbnz	r2, .L15
-  49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 306              		.loc 1 49 27 is_stmt 1 discriminator 1 view .LVU105
-  49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 307              		.loc 1 49 32 is_stmt 0 discriminator 1 view .LVU106
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 8
-
-
- 308 00f0 2049     		ldr	r1, .L25+16
- 309 00f2 8A69     		ldr	r2, [r1, #24]
-  49:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
- 310              		.loc 1 49 39 discriminator 1 view .LVU107
- 311 00f4 42F48022 		orr	r2, r2, #262144
- 312 00f8 8A61     		str	r2, [r1, #24]
- 313 00fa ADE7     		b	.L14
- 314              	.L15:
   50:Core/Src/main.c ****     }
- 315              		.loc 1 50 14 is_stmt 1 view .LVU108
-  50:Core/Src/main.c ****     }
- 316              		.loc 1 50 19 is_stmt 0 view .LVU109
- 317 00fc 1D49     		ldr	r1, .L25+16
- 318 00fe 8A69     		ldr	r2, [r1, #24]
-  50:Core/Src/main.c ****     }
- 319              		.loc 1 50 26 view .LVU110
- 320 0100 42F00402 		orr	r2, r2, #4
- 321 0104 8A61     		str	r2, [r1, #24]
- 322 0106 A7E7     		b	.L14
- 323              	.L16:
+  51:Core/Src/main.c **** 
+  52:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[3]) {
+ 169              		.loc 1 52 5 is_stmt 1 view .LVU49
+ 170              		.loc 1 52 39 is_stmt 0 view .LVU50
+ 171 0058 424A     		ldr	r2, .L25
+ 172 005a D268     		ldr	r2, [r2, #12]
+ 173              		.loc 1 52 7 view .LVU51
+ 174 005c 9342     		cmp	r3, r2
+ 175 005e 53D3     		bcc	.L16
+  53:Core/Src/main.c ****         LedStates[3] = !LedStates[3];
+ 176              		.loc 1 53 9 is_stmt 1 view .LVU52
+ 177              		.loc 1 53 34 is_stmt 0 view .LVU53
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 5
+
+
+ 178 0060 4249     		ldr	r1, .L25+8
+ 179 0062 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 180              		.loc 1 53 9 view .LVU54
+ 181 0064 82F00102 		eor	r2, r2, #1
+ 182              		.loc 1 53 22 view .LVU55
+ 183 0068 CA70     		strb	r2, [r1, #3]
+  54:Core/Src/main.c ****         LedTimersEnd[3] = GlobalTickCount + LedList[3];
+ 184              		.loc 1 54 9 is_stmt 1 view .LVU56
+ 185              		.loc 1 54 52 is_stmt 0 view .LVU57
+ 186 006a 414A     		ldr	r2, .L25+12
+ 187 006c D288     		ldrh	r2, [r2, #6]
+ 188              		.loc 1 54 43 view .LVU58
+ 189 006e 1A44     		add	r2, r2, r3
+ 190              		.loc 1 54 25 view .LVU59
+ 191 0070 3C49     		ldr	r1, .L25
+ 192 0072 CA60     		str	r2, [r1, #12]
+ 193              	.L17:
+  55:Core/Src/main.c ****     } else {
+  56:Core/Src/main.c ****         if(!LedStates[3]) GPIOD->BSRR |= GPIO_BSRR_BR3;
   57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 324              		.loc 1 57 9 is_stmt 1 view .LVU111
-  57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 325              		.loc 1 57 22 is_stmt 0 view .LVU112
- 326 0108 184A     		ldr	r2, .L25+8
- 327 010a D278     		ldrb	r2, [r2, #3]	@ zero_extendqisi2
-  57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 328              		.loc 1 57 11 view .LVU113
- 329 010c 2AB9     		cbnz	r2, .L18
-  57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 330              		.loc 1 57 27 is_stmt 1 discriminator 1 view .LVU114
-  57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 331              		.loc 1 57 32 is_stmt 0 discriminator 1 view .LVU115
- 332 010e 1949     		ldr	r1, .L25+16
- 333 0110 8A69     		ldr	r2, [r1, #24]
-  57:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
- 334              		.loc 1 57 39 discriminator 1 view .LVU116
- 335 0112 42F40022 		orr	r2, r2, #524288
- 336 0116 8A61     		str	r2, [r1, #24]
- 337 0118 ACE7     		b	.L17
- 338              	.L18:
   58:Core/Src/main.c ****     }
- 339              		.loc 1 58 14 is_stmt 1 view .LVU117
-  58:Core/Src/main.c ****     }
- 340              		.loc 1 58 19 is_stmt 0 view .LVU118
- 341 011a 1649     		ldr	r1, .L25+16
- 342 011c 8A69     		ldr	r2, [r1, #24]
-  58:Core/Src/main.c ****     }
- 343              		.loc 1 58 26 view .LVU119
- 344 011e 42F00802 		orr	r2, r2, #8
- 345 0122 8A61     		str	r2, [r1, #24]
- 346 0124 A6E7     		b	.L17
- 347              	.L19:
+  59:Core/Src/main.c **** 
+  60:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[4]) {
+ 194              		.loc 1 60 5 is_stmt 1 view .LVU60
+ 195              		.loc 1 60 39 is_stmt 0 view .LVU61
+ 196 0074 3B4A     		ldr	r2, .L25
+ 197 0076 1269     		ldr	r2, [r2, #16]
+ 198              		.loc 1 60 7 view .LVU62
+ 199 0078 9342     		cmp	r3, r2
+ 200 007a 54D3     		bcc	.L19
+  61:Core/Src/main.c ****         LedStates[4] = !LedStates[4];
+ 201              		.loc 1 61 9 is_stmt 1 view .LVU63
+ 202              		.loc 1 61 34 is_stmt 0 view .LVU64
+ 203 007c 3B49     		ldr	r1, .L25+8
+ 204 007e 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
+ 205              		.loc 1 61 9 view .LVU65
+ 206 0080 82F00102 		eor	r2, r2, #1
+ 207              		.loc 1 61 22 view .LVU66
+ 208 0084 0A71     		strb	r2, [r1, #4]
+  62:Core/Src/main.c ****         LedTimersEnd[4] = GlobalTickCount + LedList[4];
+ 209              		.loc 1 62 9 is_stmt 1 view .LVU67
+ 210              		.loc 1 62 52 is_stmt 0 view .LVU68
+ 211 0086 3A4A     		ldr	r2, .L25+12
+ 212 0088 1289     		ldrh	r2, [r2, #8]
+ 213              		.loc 1 62 43 view .LVU69
+ 214 008a 1A44     		add	r2, r2, r3
+ 215              		.loc 1 62 25 view .LVU70
+ 216 008c 3549     		ldr	r1, .L25
+ 217 008e 0A61     		str	r2, [r1, #16]
+ 218              	.L20:
+  63:Core/Src/main.c ****     } else {
+  64:Core/Src/main.c ****         if(!LedStates[4]) GPIOD->BSRR |= GPIO_BSRR_BR4;
   65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 348              		.loc 1 65 9 is_stmt 1 view .LVU120
-  65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 349              		.loc 1 65 22 is_stmt 0 view .LVU121
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 9
-
-
- 350 0126 114A     		ldr	r2, .L25+8
- 351 0128 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
-  65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 352              		.loc 1 65 11 view .LVU122
- 353 012a 2AB9     		cbnz	r2, .L21
-  65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 354              		.loc 1 65 27 is_stmt 1 discriminator 1 view .LVU123
-  65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 355              		.loc 1 65 32 is_stmt 0 discriminator 1 view .LVU124
- 356 012c 1149     		ldr	r1, .L25+16
- 357 012e 8A69     		ldr	r2, [r1, #24]
-  65:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
- 358              		.loc 1 65 39 discriminator 1 view .LVU125
- 359 0130 42F48012 		orr	r2, r2, #1048576
- 360 0134 8A61     		str	r2, [r1, #24]
- 361 0136 ABE7     		b	.L20
- 362              	.L21:
   66:Core/Src/main.c ****     }
- 363              		.loc 1 66 14 is_stmt 1 view .LVU126
-  66:Core/Src/main.c ****     }
- 364              		.loc 1 66 19 is_stmt 0 view .LVU127
- 365 0138 0E49     		ldr	r1, .L25+16
- 366 013a 8A69     		ldr	r2, [r1, #24]
-  66:Core/Src/main.c ****     }
- 367              		.loc 1 66 26 view .LVU128
- 368 013c 42F01002 		orr	r2, r2, #16
- 369 0140 8A61     		str	r2, [r1, #24]
- 370 0142 A5E7     		b	.L20
- 371              	.L22:
-  72:Core/Src/main.c ****     } else {
-  73:Core/Src/main.c ****         if(!LedStates[5]) GPIOD->BSRR |= GPIO_BSRR_BR5;
- 372              		.loc 1 73 9 is_stmt 1 view .LVU129
- 373              		.loc 1 73 22 is_stmt 0 view .LVU130
- 374 0144 094B     		ldr	r3, .L25+8
- 375 0146 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 376              		.loc 1 73 11 view .LVU131
- 377 0148 2BB9     		cbnz	r3, .L24
- 378              		.loc 1 73 27 is_stmt 1 discriminator 1 view .LVU132
- 379              		.loc 1 73 32 is_stmt 0 discriminator 1 view .LVU133
- 380 014a 0A4A     		ldr	r2, .L25+16
- 381 014c 9369     		ldr	r3, [r2, #24]
- 382              		.loc 1 73 39 discriminator 1 view .LVU134
- 383 014e 43F40013 		orr	r3, r3, #2097152
- 384 0152 9361     		str	r3, [r2, #24]
- 385 0154 7047     		bx	lr
- 386              	.L24:
-  74:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS5;
- 387              		.loc 1 74 14 is_stmt 1 view .LVU135
- 388              		.loc 1 74 19 is_stmt 0 view .LVU136
- 389 0156 074A     		ldr	r2, .L25+16
- 390 0158 9369     		ldr	r3, [r2, #24]
- 391              		.loc 1 74 26 view .LVU137
- 392 015a 43F02003 		orr	r3, r3, #32
- 393 015e 9361     		str	r3, [r2, #24]
-  75:Core/Src/main.c ****     }
-  76:Core/Src/main.c **** 
-  77:Core/Src/main.c **** }
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 10
+  67:Core/Src/main.c **** 
+  68:Core/Src/main.c ****     if(GlobalTickCount >= LedTimersEnd[5]) {
+ 219              		.loc 1 68 5 is_stmt 1 view .LVU71
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 6
 
 
- 394              		.loc 1 77 1 view .LVU138
- 395 0160 7047     		bx	lr
- 396              	.L26:
- 397 0162 00BF     		.align	2
- 398              	.L25:
- 399 0164 00000000 		.word	LedTimersEnd
- 400 0168 00000000 		.word	GlobalTickCount
- 401 016c 00000000 		.word	LedStates
- 402 0170 00000000 		.word	LedList
- 403 0174 000C0240 		.word	1073875968
- 404              		.cfi_endproc
- 405              	.LFE131:
- 407              		.global	WorkMode
- 408              		.section	.bss.WorkMode,"aw",%nobits
- 411              	WorkMode:
- 412 0000 00       		.space	1
- 413              		.global	LedStates
- 414              		.section	.bss.LedStates,"aw",%nobits
+ 220              		.loc 1 68 39 is_stmt 0 view .LVU72
+ 221 0090 344A     		ldr	r2, .L25
+ 222 0092 5269     		ldr	r2, [r2, #20]
+ 223              		.loc 1 68 7 view .LVU73
+ 224 0094 9342     		cmp	r3, r2
+ 225 0096 55D3     		bcc	.L22
+  69:Core/Src/main.c ****         LedStates[5] = !LedStates[5];
+ 226              		.loc 1 69 9 is_stmt 1 view .LVU74
+ 227              		.loc 1 69 34 is_stmt 0 view .LVU75
+ 228 0098 3449     		ldr	r1, .L25+8
+ 229 009a 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+ 230              		.loc 1 69 9 view .LVU76
+ 231 009c 82F00102 		eor	r2, r2, #1
+ 232              		.loc 1 69 22 view .LVU77
+ 233 00a0 4A71     		strb	r2, [r1, #5]
+  70:Core/Src/main.c ****         LedTimersEnd[5] = GlobalTickCount + LedList[5];
+ 234              		.loc 1 70 9 is_stmt 1 view .LVU78
+ 235              		.loc 1 70 52 is_stmt 0 view .LVU79
+ 236 00a2 334A     		ldr	r2, .L25+12
+ 237 00a4 5289     		ldrh	r2, [r2, #10]
+ 238              		.loc 1 70 43 view .LVU80
+ 239 00a6 1344     		add	r3, r3, r2
+ 240              		.loc 1 70 25 view .LVU81
+ 241 00a8 2E4A     		ldr	r2, .L25
+ 242 00aa 5361     		str	r3, [r2, #20]
+ 243 00ac 7047     		bx	lr
+ 244              	.L7:
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 245              		.loc 1 32 9 is_stmt 1 view .LVU82
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 246              		.loc 1 32 22 is_stmt 0 view .LVU83
+ 247 00ae 2F4A     		ldr	r2, .L25+8
+ 248 00b0 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 249              		.loc 1 32 11 view .LVU84
+ 250 00b2 2AB9     		cbnz	r2, .L9
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 251              		.loc 1 32 27 is_stmt 1 discriminator 1 view .LVU85
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 252              		.loc 1 32 32 is_stmt 0 discriminator 1 view .LVU86
+ 253 00b4 2F49     		ldr	r1, .L25+16
+ 254 00b6 8A69     		ldr	r2, [r1, #24]
+  32:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS0;
+ 255              		.loc 1 32 39 discriminator 1 view .LVU87
+ 256 00b8 42F48032 		orr	r2, r2, #65536
+ 257 00bc 8A61     		str	r2, [r1, #24]
+ 258 00be AFE7     		b	.L8
+ 259              	.L9:
+  33:Core/Src/main.c ****     }
+ 260              		.loc 1 33 14 is_stmt 1 view .LVU88
+  33:Core/Src/main.c ****     }
+ 261              		.loc 1 33 19 is_stmt 0 view .LVU89
+ 262 00c0 2C49     		ldr	r1, .L25+16
+ 263 00c2 8A69     		ldr	r2, [r1, #24]
+  33:Core/Src/main.c ****     }
+ 264              		.loc 1 33 26 view .LVU90
+ 265 00c4 42F00102 		orr	r2, r2, #1
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 7
+
+
+ 266 00c8 8A61     		str	r2, [r1, #24]
+ 267 00ca A9E7     		b	.L8
+ 268              	.L10:
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 269              		.loc 1 40 9 is_stmt 1 view .LVU91
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 270              		.loc 1 40 22 is_stmt 0 view .LVU92
+ 271 00cc 274A     		ldr	r2, .L25+8
+ 272 00ce 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 273              		.loc 1 40 11 view .LVU93
+ 274 00d0 2AB9     		cbnz	r2, .L12
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 275              		.loc 1 40 27 is_stmt 1 discriminator 1 view .LVU94
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 276              		.loc 1 40 32 is_stmt 0 discriminator 1 view .LVU95
+ 277 00d2 2849     		ldr	r1, .L25+16
+ 278 00d4 8A69     		ldr	r2, [r1, #24]
+  40:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS1;
+ 279              		.loc 1 40 39 discriminator 1 view .LVU96
+ 280 00d6 42F40032 		orr	r2, r2, #131072
+ 281 00da 8A61     		str	r2, [r1, #24]
+ 282 00dc AEE7     		b	.L11
+ 283              	.L12:
+  41:Core/Src/main.c ****     }
+ 284              		.loc 1 41 14 is_stmt 1 view .LVU97
+  41:Core/Src/main.c ****     }
+ 285              		.loc 1 41 19 is_stmt 0 view .LVU98
+ 286 00de 2549     		ldr	r1, .L25+16
+ 287 00e0 8A69     		ldr	r2, [r1, #24]
+  41:Core/Src/main.c ****     }
+ 288              		.loc 1 41 26 view .LVU99
+ 289 00e2 42F00202 		orr	r2, r2, #2
+ 290 00e6 8A61     		str	r2, [r1, #24]
+ 291 00e8 A8E7     		b	.L11
+ 292              	.L13:
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 293              		.loc 1 48 9 is_stmt 1 view .LVU100
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 294              		.loc 1 48 22 is_stmt 0 view .LVU101
+ 295 00ea 204A     		ldr	r2, .L25+8
+ 296 00ec 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 297              		.loc 1 48 11 view .LVU102
+ 298 00ee 2AB9     		cbnz	r2, .L15
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 299              		.loc 1 48 27 is_stmt 1 discriminator 1 view .LVU103
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 300              		.loc 1 48 32 is_stmt 0 discriminator 1 view .LVU104
+ 301 00f0 2049     		ldr	r1, .L25+16
+ 302 00f2 8A69     		ldr	r2, [r1, #24]
+  48:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS2;
+ 303              		.loc 1 48 39 discriminator 1 view .LVU105
+ 304 00f4 42F48022 		orr	r2, r2, #262144
+ 305 00f8 8A61     		str	r2, [r1, #24]
+ 306 00fa ADE7     		b	.L14
+ 307              	.L15:
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 8
+
+
+  49:Core/Src/main.c ****     }
+ 308              		.loc 1 49 14 is_stmt 1 view .LVU106
+  49:Core/Src/main.c ****     }
+ 309              		.loc 1 49 19 is_stmt 0 view .LVU107
+ 310 00fc 1D49     		ldr	r1, .L25+16
+ 311 00fe 8A69     		ldr	r2, [r1, #24]
+  49:Core/Src/main.c ****     }
+ 312              		.loc 1 49 26 view .LVU108
+ 313 0100 42F00402 		orr	r2, r2, #4
+ 314 0104 8A61     		str	r2, [r1, #24]
+ 315 0106 A7E7     		b	.L14
+ 316              	.L16:
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 317              		.loc 1 56 9 is_stmt 1 view .LVU109
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 318              		.loc 1 56 22 is_stmt 0 view .LVU110
+ 319 0108 184A     		ldr	r2, .L25+8
+ 320 010a D278     		ldrb	r2, [r2, #3]	@ zero_extendqisi2
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 321              		.loc 1 56 11 view .LVU111
+ 322 010c 2AB9     		cbnz	r2, .L18
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 323              		.loc 1 56 27 is_stmt 1 discriminator 1 view .LVU112
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 324              		.loc 1 56 32 is_stmt 0 discriminator 1 view .LVU113
+ 325 010e 1949     		ldr	r1, .L25+16
+ 326 0110 8A69     		ldr	r2, [r1, #24]
+  56:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS3;
+ 327              		.loc 1 56 39 discriminator 1 view .LVU114
+ 328 0112 42F40022 		orr	r2, r2, #524288
+ 329 0116 8A61     		str	r2, [r1, #24]
+ 330 0118 ACE7     		b	.L17
+ 331              	.L18:
+  57:Core/Src/main.c ****     }
+ 332              		.loc 1 57 14 is_stmt 1 view .LVU115
+  57:Core/Src/main.c ****     }
+ 333              		.loc 1 57 19 is_stmt 0 view .LVU116
+ 334 011a 1649     		ldr	r1, .L25+16
+ 335 011c 8A69     		ldr	r2, [r1, #24]
+  57:Core/Src/main.c ****     }
+ 336              		.loc 1 57 26 view .LVU117
+ 337 011e 42F00802 		orr	r2, r2, #8
+ 338 0122 8A61     		str	r2, [r1, #24]
+ 339 0124 A6E7     		b	.L17
+ 340              	.L19:
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ 341              		.loc 1 64 9 is_stmt 1 view .LVU118
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ 342              		.loc 1 64 22 is_stmt 0 view .LVU119
+ 343 0126 114A     		ldr	r2, .L25+8
+ 344 0128 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ 345              		.loc 1 64 11 view .LVU120
+ 346 012a 2AB9     		cbnz	r2, .L21
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ 347              		.loc 1 64 27 is_stmt 1 discriminator 1 view .LVU121
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 9
+
+
+ 348              		.loc 1 64 32 is_stmt 0 discriminator 1 view .LVU122
+ 349 012c 1149     		ldr	r1, .L25+16
+ 350 012e 8A69     		ldr	r2, [r1, #24]
+  64:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS4;
+ 351              		.loc 1 64 39 discriminator 1 view .LVU123
+ 352 0130 42F48012 		orr	r2, r2, #1048576
+ 353 0134 8A61     		str	r2, [r1, #24]
+ 354 0136 ABE7     		b	.L20
+ 355              	.L21:
+  65:Core/Src/main.c ****     }
+ 356              		.loc 1 65 14 is_stmt 1 view .LVU124
+  65:Core/Src/main.c ****     }
+ 357              		.loc 1 65 19 is_stmt 0 view .LVU125
+ 358 0138 0E49     		ldr	r1, .L25+16
+ 359 013a 8A69     		ldr	r2, [r1, #24]
+  65:Core/Src/main.c ****     }
+ 360              		.loc 1 65 26 view .LVU126
+ 361 013c 42F01002 		orr	r2, r2, #16
+ 362 0140 8A61     		str	r2, [r1, #24]
+ 363 0142 A5E7     		b	.L20
+ 364              	.L22:
+  71:Core/Src/main.c ****     } else {
+  72:Core/Src/main.c ****         if(!LedStates[5]) GPIOD->BSRR |= GPIO_BSRR_BR5;
+ 365              		.loc 1 72 9 is_stmt 1 view .LVU127
+ 366              		.loc 1 72 22 is_stmt 0 view .LVU128
+ 367 0144 094B     		ldr	r3, .L25+8
+ 368 0146 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 369              		.loc 1 72 11 view .LVU129
+ 370 0148 2BB9     		cbnz	r3, .L24
+ 371              		.loc 1 72 27 is_stmt 1 discriminator 1 view .LVU130
+ 372              		.loc 1 72 32 is_stmt 0 discriminator 1 view .LVU131
+ 373 014a 0A4A     		ldr	r2, .L25+16
+ 374 014c 9369     		ldr	r3, [r2, #24]
+ 375              		.loc 1 72 39 discriminator 1 view .LVU132
+ 376 014e 43F40013 		orr	r3, r3, #2097152
+ 377 0152 9361     		str	r3, [r2, #24]
+ 378 0154 7047     		bx	lr
+ 379              	.L24:
+  73:Core/Src/main.c ****         else GPIOD->BSRR |= GPIO_BSRR_BS5;
+ 380              		.loc 1 73 14 is_stmt 1 view .LVU133
+ 381              		.loc 1 73 19 is_stmt 0 view .LVU134
+ 382 0156 074A     		ldr	r2, .L25+16
+ 383 0158 9369     		ldr	r3, [r2, #24]
+ 384              		.loc 1 73 26 view .LVU135
+ 385 015a 43F02003 		orr	r3, r3, #32
+ 386 015e 9361     		str	r3, [r2, #24]
+  74:Core/Src/main.c ****     }
+  75:Core/Src/main.c **** 
+  76:Core/Src/main.c **** }
+ 387              		.loc 1 76 1 view .LVU136
+ 388 0160 7047     		bx	lr
+ 389              	.L26:
+ 390 0162 00BF     		.align	2
+ 391              	.L25:
+ 392 0164 00000000 		.word	LedTimersEnd
+ 393 0168 00000000 		.word	GlobalTickCount
+ 394 016c 00000000 		.word	LedStates
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 10
+
+
+ 395 0170 00000000 		.word	LedList
+ 396 0174 000C0240 		.word	1073875968
+ 397              		.cfi_endproc
+ 398              	.LFE131:
+ 400              		.global	WorkMode
+ 401              		.section	.bss.WorkMode,"aw",%nobits
+ 404              	WorkMode:
+ 405 0000 00       		.space	1
+ 406              		.global	LedStates
+ 407              		.section	.bss.LedStates,"aw",%nobits
+ 408              		.align	2
+ 411              	LedStates:
+ 412 0000 00000000 		.space	6
+ 412      0000
+ 413              		.global	LedTimersEnd
+ 414              		.section	.bss.LedTimersEnd,"aw",%nobits
  415              		.align	2
- 418              	LedStates:
- 419 0000 00000000 		.space	6
- 419      0000
- 420              		.global	LedTimersEnd
- 421              		.section	.bss.LedTimersEnd,"aw",%nobits
+ 418              	LedTimersEnd:
+ 419 0000 00000000 		.space	24
+ 419      00000000 
+ 419      00000000 
+ 419      00000000 
+ 419      00000000 
+ 420              		.global	LedList
+ 421              		.section	.bss.LedList,"aw",%nobits
  422              		.align	2
- 425              	LedTimersEnd:
- 426 0000 00000000 		.space	24
+ 425              	LedList:
+ 426 0000 00000000 		.space	12
  426      00000000 
  426      00000000 
- 426      00000000 
- 426      00000000 
- 427              		.global	LedList
- 428              		.section	.bss.LedList,"aw",%nobits
- 429              		.align	2
- 432              	LedList:
- 433 0000 00000000 		.space	12
- 433      00000000 
- 433      00000000 
- 434              		.global	CurLed
- 435              		.section	.bss.CurLed,"aw",%nobits
- 438              	CurLed:
- 439 0000 00       		.space	1
- 440              		.global	GlobalTickCount
- 441              		.section	.bss.GlobalTickCount,"aw",%nobits
- 442              		.align	2
- 445              	GlobalTickCount:
- 446 0000 00000000 		.space	4
- 447              		.text
- 448              	.Letext0:
- 449              		.file 2 "C:/MCU_programming/Tools/GNU_compiler/arm-none-eabi/include/machine/_default_types.h"
- 450              		.file 3 "C:/MCU_programming/Tools/GNU_compiler/arm-none-eabi/include/sys/_stdint.h"
- 451              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
- 452              		.file 5 "Core/Inc/init.h"
-ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s 			page 11
+ 427              		.global	CurLed
+ 428              		.section	.bss.CurLed,"aw",%nobits
+ 431              	CurLed:
+ 432 0000 00       		.space	1
+ 433              		.global	GlobalTickCount
+ 434              		.section	.bss.GlobalTickCount,"aw",%nobits
+ 435              		.align	2
+ 438              	GlobalTickCount:
+ 439 0000 00000000 		.space	4
+ 440              		.text
+ 441              	.Letext0:
+ 442              		.file 2 "C:/MCU_programming/Tools/GNU_compiler/arm-none-eabi/include/machine/_default_types.h"
+ 443              		.file 3 "C:/MCU_programming/Tools/GNU_compiler/arm-none-eabi/include/sys/_stdint.h"
+ 444              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
+ 445              		.file 5 "Core/Inc/init.h"
+ARM GAS  C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:21     .text.main:00000000 $t
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:27     .text.main:00000000 main
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:79     .text.main:00000034 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:85     .text.LedController:00000000 $t
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:91     .text.LedController:00000000 LedController
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:399    .text.LedController:00000164 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:425    .bss.LedTimersEnd:00000000 LedTimersEnd
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:445    .bss.GlobalTickCount:00000000 GlobalTickCount
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:418    .bss.LedStates:00000000 LedStates
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:432    .bss.LedList:00000000 LedList
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:411    .bss.WorkMode:00000000 WorkMode
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:412    .bss.WorkMode:00000000 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:415    .bss.LedStates:00000000 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:422    .bss.LedTimersEnd:00000000 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:429    .bss.LedList:00000000 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:438    .bss.CurLed:00000000 CurLed
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:439    .bss.CurLed:00000000 $d
-C:\Users\AACE~1\AppData\Local\Temp\ccELSmtl.s:442    .bss.GlobalTickCount:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:21     .text.main:00000000 $t
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:27     .text.main:00000000 main
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:73     .text.main:0000002c $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:78     .text.LedController:00000000 $t
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:84     .text.LedController:00000000 LedController
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:392    .text.LedController:00000164 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:418    .bss.LedTimersEnd:00000000 LedTimersEnd
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:438    .bss.GlobalTickCount:00000000 GlobalTickCount
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:411    .bss.LedStates:00000000 LedStates
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:425    .bss.LedList:00000000 LedList
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:404    .bss.WorkMode:00000000 WorkMode
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:405    .bss.WorkMode:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:408    .bss.LedStates:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:415    .bss.LedTimersEnd:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:422    .bss.LedList:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:431    .bss.CurLed:00000000 CurLed
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:432    .bss.CurLed:00000000 $d
+C:\Users\AACE~1\AppData\Local\Temp\ccgGguHF.s:435    .bss.GlobalTickCount:00000000 $d
 
 UNDEFINED SYMBOLS
 GPIO_Ini

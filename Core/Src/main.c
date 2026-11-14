@@ -21,7 +21,7 @@ int main(void) {
     GPIOB->MODER |= GPIO_MODER_MODE7_0;
 
     while(1){
-        GPIOB->BSRR |= GPIO_BSRR_BS7;
+        if(GPIOC->IDR == !GPIO_IDR_ID0)
     }
 }
 

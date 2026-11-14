@@ -13,6 +13,12 @@ extern float LedList[6];
 void EXTI0_IRQHandler(void)
 {
     SET_BIT(EXTI->PR, EXTI_PR_PR0);
+    GPIOD->BSRR |= GPIO_BSRR_BS0;
+    GPIOD->BSRR |= GPIO_BSRR_BS1;
+    GPIOD->BSRR |= GPIO_BSRR_BS2;
+    GPIOD->BSRR |= GPIO_BSRR_BS3;
+    GPIOD->BSRR |= GPIO_BSRR_BS4;
+    GPIOD->BSRR |= GPIO_BSRR_BS5;
     if(ExternInterruptTickCount >= DELAY_BUTTON_FILTER){
         Btn1Count++;
         ExternInterruptTickCount = 0;

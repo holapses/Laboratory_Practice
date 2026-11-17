@@ -5,5 +5,6 @@
 void EXTI0_IRQHandler(void);
 void EXTI1_IRQHandler(void);
 void EXTI2_IRQHandler(void);
+void updateSync(void);
 
 void SysTick_Handler(void);

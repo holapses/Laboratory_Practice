@@ -10,6 +10,9 @@ extern uint32_t TestTickCount;
 extern _Bool WorkMode;
 extern uint8_t CurLed;
 extern uint16_t LedList[6];
+extern uint16_t GarlandFreq;
+extern uint32_t LedTimersEnd[6];
+extern _Bool LedStates[6];
 
 void EXTI0_IRQHandler(void)
 {
@@ -19,6 +22,10 @@ void EXTI0_IRQHandler(void)
         ExternInterruptTickCount = 0;
         WorkMode = !WorkMode;
         Btn2Count = 0;
+
+        if(WorkMode == 0) {
+            updateSync();
+        }
     }
 }
 void EXTI3_IRQHandler(void)
@@ -29,15 +36,16 @@ void EXTI3_IRQHandler(void)
         ExternInterruptTickCount = 0;
         if(WorkMode == 0) {
             if(Btn2Count == 3) {
-                LedList[CurLed] = 833;
+                GarlandFreq = 833; //833 default
                 Btn2Count = 0;
             }
             else if(Btn2Count == 1){
-                LedList[CurLed] = 385;
+                GarlandFreq = 385;
             } 
             else if(Btn2Count == 2) {
-                LedList[CurLed] = 208;
+                GarlandFreq = 208;
             }
+            updateSync();
         } else {
             if(Btn2Count == 3) {
                 LedList[CurLed] = 2500;
@@ -71,3 +79,14 @@ void SysTick_Handler(void) {
     ExternInterruptTickCount++;
 }
 
+void updateSync(void) {
+    for(uint8_t i = 0; i <= 5; i++){
+        LedStates[i] = 0;
+    }
+    LedTimersEnd[0] = GlobalTickCount;
+    LedTimersEnd[1] = LedTimersEnd[0] + GarlandFreq;
+    LedTimersEnd[2] = LedTimersEnd[1] + GarlandFreq;
+    LedTimersEnd[3] = LedTimersEnd[2] + GarlandFreq;
+    LedTimersEnd[4] = LedTimersEnd[3] + GarlandFreq;
+    LedTimersEnd[5] = LedTimersEnd[4] + GarlandFreq;
+}

@@ -5,7 +5,7 @@ uint8_t Btn2Count;
 uint8_t Btn3Count;
 
 uint16_t ExternInterruptTickCount;
-extern uint16_t GlobalTickCount;
+extern volatile uint32_t GlobalTickCount;
 extern uint32_t TestTickCount;
 extern _Bool WorkMode;
 extern uint8_t CurLed;
@@ -43,8 +43,12 @@ void EXTI3_IRQHandler(void)
                 LedList[CurLed] = 2500;
                 Btn2Count = 0;
             }
-            else if(Btn2Count == 1) LedList[CurLed] = 556;
-            else if(Btn2Count == 2) LedList[CurLed] = 333;
+            else if(Btn2Count == 1) {
+                LedList[CurLed] = 556;
+            }
+            else if(Btn2Count == 2) {
+                LedList[CurLed] = 333;
+            }
         }
     }
 }

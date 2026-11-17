@@ -5,7 +5,7 @@ void LedController(void);
 
 
 uint32_t TestTickCount = 0;
-uint32_t GlobalTickCount;
+volatile uint32_t GlobalTickCount = 0;
 uint8_t CurLed = 0; 
 uint16_t LedList[6] = {0, 0, 0, 0, 0, 0};
 uint32_t LedTimersEnd[6] = {0, 0, 0, 0, 0, 0};
@@ -32,14 +32,6 @@ int main(void) {
 }
 
 void LedController(void) {
-    for(int16_t i = 0; i <= 5; i++){
-        if(LedTimersEnd[i] >= 10000) {
-            GlobalTickCount = 0;
-            for(int16_t j = 0; j <= 5; j++) {
-                LedTimersEnd[j] = 0;
-            }
-        }
-    }
     if((GlobalTickCount >= LedTimersEnd[0]) && LedList[0] != 0) {
         LedStates[0] = !LedStates[0];
         ledone = LedStates[0];
